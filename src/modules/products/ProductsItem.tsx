@@ -39,6 +39,7 @@ const StyledProductsItem = styled('div')(({ theme }) => ({
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
+  border: '1px solid #212630',
   borderRadius: 20,
   padding: theme.spacing(5),
 }));
