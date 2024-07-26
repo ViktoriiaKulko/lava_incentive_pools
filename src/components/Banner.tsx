@@ -63,7 +63,6 @@ const StyledBanner = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
   border: '1px solid #212630',
   borderRadius: 20,
-  overflow: 'hidden',
   padding: theme.spacing(3),
   position: 'relative',
 
@@ -72,6 +71,7 @@ const StyledBanner = styled('div')(({ theme }) => ({
   '&.lavuci': { maxWidth: 674 },
 
   [theme.breakpoints.down('sm')]: {
+    overflow: 'hidden',
     padding: theme.spacing(2),
 
     '&.lavuci_bag': { maxWidth: 228 },
