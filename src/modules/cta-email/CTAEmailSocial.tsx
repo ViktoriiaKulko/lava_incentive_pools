@@ -41,4 +41,10 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
     backgroundColor: theme.palette.common.white,
     color: theme.palette.primary.main,
   },
+
+  [theme.breakpoints.down('sm')]: {
+    fontSize: 24,
+    height: 48,
+    width: 48,
+  },
 }));

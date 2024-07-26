@@ -8,6 +8,8 @@ import {
   styled,
   TextField,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import { Space_Grotesk } from 'next/font/google';
 
@@ -20,14 +22,34 @@ import useDebounce from '@/hooks/useDebounce';
 const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const Chains = () => {
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+
   const [searchValue, setSeachValue] = useState<string>('');
   const debouncedSearchValue = useDebounce(searchValue, 300);
+
+  const SearchField = () => (
+    <StyledTextField
+      placeholder="Search chain name"
+      value={searchValue}
+      onChange={(e) => {
+        setSeachValue(e.currentTarget.value);
+      }}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">
+            <Search />
+          </InputAdornment>
+        ),
+      }}
+    />
+  );
 
   return (
     <StyledChains spacing={4}>
       <div>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Stack spacing={4}>
               <Stack spacing={1}>
                 <Typography className={spaceGrotesk.className} variant="h2">
@@ -39,30 +61,21 @@ export const Chains = () => {
                 </StyledTypography>
               </Stack>
 
-              <StyledTextField
-                placeholder="Search chain name"
-                value={searchValue}
-                onChange={(e) => {
-                  setSeachValue(e.currentTarget.value);
-                }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Search />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+              {!isTablet && <SearchField />}
             </Stack>
           </Grid>
 
-          <Grid item xs={6}>
-            <Banner
-              button="Learn more"
-              link="/"
-              message="Add it yourself as a specification and earn LAVA for every request served"
-              title="Don't see your favourite chain?"
-            />
+          <Grid item xs={12} md={6}>
+            <Stack spacing={3}>
+              <Banner
+                button="Learn more"
+                link="/"
+                message="Add it yourself as a specification and earn LAVA for every request served"
+                title="Don't see your favourite chain?"
+              />
+
+              {isTablet && <SearchField />}
+            </Stack>
           </Grid>
         </Grid>
       </div>
@@ -75,10 +88,21 @@ export const Chains = () => {
 const StyledChains = styled(Stack)(({ theme }) => ({
   paddingBottom: theme.spacing(14),
   paddingTop: theme.spacing(10),
+
+  [theme.breakpoints.down('md')]: {
+    paddingBottom: theme.spacing(6),
+    paddingTop: theme.spacing(4),
+  },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
 }));
 
-const StyledTextField = styled(TextField)({ maxWidth: 445 });
+const StyledTextField = styled(TextField)(({ theme }) => ({
+  maxWidth: 445,
+
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '100%',
+  },
+}));

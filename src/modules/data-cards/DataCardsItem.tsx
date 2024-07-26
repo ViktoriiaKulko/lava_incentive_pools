@@ -12,6 +12,7 @@ export const DataCardItem = ({ message, title, value }: IDataCard) => (
   <StyledDataCard spacing={2}>
     <StyledStack spacing={0.5}>
       <Typography variant="h6">{title}</Typography>
+
       {message && (
         <StyledTypography variant="body2">{message}</StyledTypography>
       )}
@@ -32,6 +33,10 @@ const StyledDataCard = styled(Stack)(({ theme }) => ({
   borderRadius: 20,
   height: '100%',
   padding: theme.spacing(3),
+
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(2),
+  },
 }));
 
 const StyledStack = styled(Stack)({ flexGrow: 1 });

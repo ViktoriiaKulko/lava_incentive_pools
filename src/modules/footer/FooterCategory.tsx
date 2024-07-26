@@ -28,6 +28,8 @@ const StyledStack = styled(Stack)({ flex: 1 });
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[200],
   minHeight: 22,
+
+  [theme.breakpoints.down('md')]: { minHeight: 0 },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({

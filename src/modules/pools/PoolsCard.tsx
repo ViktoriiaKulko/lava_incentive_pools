@@ -59,7 +59,7 @@ export const PoolsCard = ({
     <StyledStack style={{ backgroundImage: `${bg_colors[index]}` }} spacing={3}>
       <div>
         <Grid alignItems="center" container spacing={1}>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Stack alignItems="center" direction="row" spacing={1}>
               <StyledIcon>
                 <IconSvg>{icons[type]}</IconSvg>
@@ -68,7 +68,7 @@ export const PoolsCard = ({
             </Stack>
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <StyledTypography variant="caption">Service</StyledTypography>
             <br />
             <Typography variant="caption">{service}</Typography>
@@ -100,7 +100,7 @@ export const PoolsCard = ({
 
         <div>
           <Grid container spacing={2}>
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Stack spacing={2}>
                 <PoolsCardData
                   chartPointType="white"
@@ -126,7 +126,7 @@ export const PoolsCard = ({
               </Stack>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid item xs={12} md={6}>
               <Stack spacing={2}>
                 <PoolsCardData title="Months remaining" value="8" type={type} />
 
@@ -149,7 +149,7 @@ export const PoolsCard = ({
         </div>
       </Stack>
 
-      <Stack direction="row" spacing={2}>
+      <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
         <Button variant="contained">Run RPC node</Button>
 
         <Button disabled variant="contained">
@@ -171,6 +171,10 @@ const StyledPoolsCard = styled('div')({
 
 const StyledStack = styled(Stack)(({ theme }) => ({
   padding: theme.spacing(3),
+
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(2),
+  },
 }));
 
 const StyledIcon = styled('div')({ fontSize: 32 });

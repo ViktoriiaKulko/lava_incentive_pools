@@ -2,13 +2,13 @@
 
 import { createTheme } from "@mui/material";
 
-const baseTheme = createTheme({
+let theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
       sm: 600,
       md: 1024,
-      lg: 1366,
+      lg: 1200,
       xl: 1920,
     },
   },
@@ -30,7 +30,10 @@ const baseTheme = createTheme({
       primary: '#FFF',
       secondary: '#05090F',
     }
-  },
+  }
+});
+
+theme = createTheme(theme, {
   typography: {
     fontFamily: [
       '-apple-system',
@@ -58,36 +61,63 @@ const baseTheme = createTheme({
     h1: {
       fontSize: 56,
       fontWeight: 500,
-      lineHeight: '62px'
+      lineHeight: '62px',
+
+      [theme.breakpoints.down('md')]: {
+        fontSize: 32,
+        lineHeight: '36px',
+      }
     },
     h2: {
       fontSize: 30,
       fontWeight: 500,
-      lineHeight: '36px'
+      lineHeight: '36px',
+
+      [theme.breakpoints.down('md')]: {
+        fontSize: 26,
+        lineHeight: '34px',
+      }
     },
     h3: {
       fontSize: 24,
       fontWeight: 500,
-      lineHeight: '28px'
+      lineHeight: '28px',
+
+      [theme.breakpoints.down('md')]: {
+        fontSize: 22,
+        lineHeight: '24px',
+      }
     },
     h4: {
       fontSize: 22,
       fontWeight: 500,
-      lineHeight: '28px'
+      lineHeight: '28px',
+
+      [theme.breakpoints.down('md')]: {
+        fontSize: 20,
+        lineHeight: '24px',
+      }
     },
     h5: {
       fontSize: 20,
-      lineHeight: '28px'
+      lineHeight: '28px',
+
+      [theme.breakpoints.down('md')]: {
+        fontSize: 16,
+        lineHeight: '22px',
+      }
     },
     h6: {
       fontSize: 18,
       fontWeight: 500,
-      lineHeight: '22px'
+      lineHeight: '22px',
+
+      [theme.breakpoints.down('md')]: {
+        fontSize: 16,
+        lineHeight: '22px',
+      }
     },
   },
-});
-
-export const theme = createTheme(baseTheme, {
   components: {
     MuiButton: {
       styleOverrides: {
@@ -119,7 +149,7 @@ export const theme = createTheme(baseTheme, {
           props: { color: 'primary', variant: 'contained' },
           style: {
             '&.Mui-disabled': {
-              color: baseTheme.palette.grey[300],
+              color: theme.palette.grey[300],
               backgroundColor: '#131821', // TODO: move to the palette
             }
           }
@@ -127,25 +157,25 @@ export const theme = createTheme(baseTheme, {
         {
           props: { color: 'secondary', variant: 'contained' },
           style: {
-            backgroundColor: baseTheme.palette.background.paper,
+            backgroundColor: theme.palette.background.paper,
             boxShadow: '0px 1px 12px 0px #FFFFFF52',
-            color: baseTheme.palette.text.secondary,
+            color: theme.palette.text.secondary,
 
             '&:hover': {
-              backgroundColor: baseTheme.palette.common.white,
+              backgroundColor: theme.palette.common.white,
             },
           }
         },
         {
           props: { color: 'secondary', variant: 'outlined' },
           style: {
-            backgroundColor: baseTheme.palette.background.default,
+            backgroundColor: theme.palette.background.default,
             border: '1px solid #5E6167', // TODO: move to the palette
             boxShadow: 'none',
-            color: baseTheme.palette.common.white,
+            color: theme.palette.common.white,
 
             '&:hover': {
-              borderColor: baseTheme.palette.primary.main
+              borderColor: theme.palette.primary.main
             },
           }
         },
@@ -153,11 +183,11 @@ export const theme = createTheme(baseTheme, {
           props: { variant: 'text' },
           style: {
             boxShadow: 'none',
-            color: baseTheme.palette.common.white,
+            color: theme.palette.common.white,
             padding: 0,
             transition: 'color 0.3',
 
-            '&:hover': { color: baseTheme.palette.primary.main }
+            '&:hover': { color: theme.palette.primary.main }
           }
         }
       ]
@@ -184,7 +214,7 @@ export const theme = createTheme(baseTheme, {
           lineHeight: '22px',
 
           '& .MuiOutlinedInput-root ::placeholder': {
-            color: baseTheme.palette.grey[100]
+            color: theme.palette.grey[100]
           },
 
           '& .MuiOutlinedInput-notchedOutline': {
@@ -198,15 +228,15 @@ export const theme = createTheme(baseTheme, {
     MuiInputAdornment: {
       styleOverrides: {
         root: {
-          color: baseTheme.palette.grey[100]
+          color: theme.palette.grey[100]
         }
       }
     },
     MuiList: {
       styleOverrides: {
         root: {
-          backgroundColor: baseTheme.palette.background.default,
-          border: `1px solid ${baseTheme.palette.grey[300]}`,
+          backgroundColor: theme.palette.background.default,
+          border: `1px solid ${theme.palette.grey[300]}`,
           borderRadius: 8
         }
       }
@@ -223,7 +253,7 @@ export const theme = createTheme(baseTheme, {
       styleOverrides: {
         root: {
           transition: 'color 0.3s',
-          '&:hover': { color: baseTheme.palette.primary.main }
+          '&:hover': { color: theme.palette.primary.main }
         }
       },
     },
@@ -231,10 +261,10 @@ export const theme = createTheme(baseTheme, {
       styleOverrides: {
         root: {
           '& .MuiPaper-root': {
-            backgroundColor: baseTheme.palette.background.default,
-            border: `1px solid ${baseTheme.palette.primary.main}`,
+            backgroundColor: theme.palette.background.default,
+            border: `1px solid ${theme.palette.primary.main}`,
             borderRadius: 20,
-            color: baseTheme.palette.common.white
+            color: theme.palette.common.white
           }
         }
       }
@@ -247,3 +277,5 @@ export const theme = createTheme(baseTheme, {
     }
   }
 });
+
+export { theme };

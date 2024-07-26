@@ -17,7 +17,7 @@ const pools: IPool[] = [
 export const Pools = () => (
   <StyledGrid container spacing={1.5}>
     {pools.map((pool, index) => (
-      <Grid key={pool.title} item xs={4}>
+      <Grid key={pool.title} item xs={12} sm={6} lg={4}>
         <PoolsCard index={index} {...pool} />
       </Grid>
     ))}
@@ -27,4 +27,9 @@ export const Pools = () => (
 const StyledGrid = styled(Grid)(({ theme }) => ({
   paddingBottom: theme.spacing(8),
   paddingTop: theme.spacing(8),
+
+  [theme.breakpoints.down('md')]: {
+    paddingBottom: theme.spacing(4),
+    paddingTop: theme.spacing(4),
+  },
 }));

@@ -9,8 +9,8 @@ import { Banner } from '@/components';
 const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const Preview = () => (
-  <StyledGrid alignItems="center" container>
-    <Grid item xs={8}>
+  <StyledGrid alignItems="center" container spacing={2}>
+    <Grid item xs={12} sm={8} md={7} lg={8}>
       <Stack spacing={1}>
         <Typography className={spaceGrotesk.className} variant="h1">
           Lava Incentive Pools
@@ -22,7 +22,7 @@ export const Preview = () => (
       </Stack>
     </Grid>
 
-    <Grid item xs={4}>
+    <Grid item xs={12} sm={8} md={5} lg={4}>
       <Banner
         button="Become an RPC Provider"
         buttonType="text"
@@ -35,11 +35,16 @@ export const Preview = () => (
   </StyledGrid>
 );
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[100],
-}));
-
 const StyledGrid = styled(Grid)(({ theme }) => ({
   paddingBottom: theme.spacing(4),
   paddingTop: theme.spacing(6),
+
+  [theme.breakpoints.down('md')]: {
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2),
+  },
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.grey[100],
 }));

@@ -41,7 +41,11 @@ const StyledProductsItem = styled('div')(({ theme }) => ({
   backgroundSize: 'cover',
   border: '1px solid #212630',
   borderRadius: 20,
-  padding: theme.spacing(5),
+  padding: theme.spacing(4),
+
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(2),
+  },
 }));
 
 const StyledTitle = styled('div')(({ theme }) => ({
@@ -67,4 +71,9 @@ const StyledTitle = styled('div')(({ theme }) => ({
 const StyledTypography = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing(5),
   marginTop: theme.spacing(3),
+
+  [theme.breakpoints.down('md')]: {
+    marginBottom: theme.spacing(3),
+    marginTop: theme.spacing(2),
+  }
 }));

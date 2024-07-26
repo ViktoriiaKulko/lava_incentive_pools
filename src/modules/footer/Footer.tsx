@@ -9,11 +9,11 @@ import { navItems } from '@/utils/variables';
 
 export const Footer = () => (
   <footer>
-    <Stack spacing={8}>
+    <Stack spacing={{ xs: 4, sm: 8 }}>
       <Stack spacing={3}>
         <div>
           <Grid container spacing={4}>
-            <Grid item xs={3}>
+            <Grid item xs={12} sm={8} md={3}>
               <Stack spacing={3}>
                 <Image
                   alt="Logo"
@@ -36,8 +36,8 @@ export const Footer = () => (
               </Stack>
             </Grid>
 
-            <Grid item xs={9}>
-              <Stack direction="row" spacing={3}>
+            <Grid item xs={12} md={9}>
+              <Stack direction={{ xs: 'column', sm: 'row' }} spacing={3}>
                 <FooterCategory
                   links={[{ link: '/', title: 'Rollup Developers' }]}
                 />
@@ -49,7 +49,11 @@ export const Footer = () => (
           </Grid>
         </div>
 
-        <Stack direction="row" justifyContent="space-between" spacing={2}>
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
+          justifyContent="space-between"
+          spacing={2}
+        >
           <StyledTypography variant="body2">
             © Lava Foundation., 2024. All Right Reserved.
           </StyledTypography>
@@ -88,4 +92,9 @@ const StyledTagline = styled('div')(({ theme }) => ({
   margin: theme.spacing(4, 0),
   height: 83,
   width: '100%',
+
+  [theme.breakpoints.down('md')]: {
+    height: 62,
+    margin: theme.spacing(2, 0),
+  },
 }));

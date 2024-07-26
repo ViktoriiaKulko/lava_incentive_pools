@@ -26,7 +26,7 @@ const products: IProduct[] = [
 export const Products = () => (
   <StyledGrid container spacing={1.5}>
     {products.map((product) => (
-      <Grid key={product.title} item xs={4}>
+      <Grid key={product.title} item xs={12} md={4}>
         <ProductsItem {...product} />
       </Grid>
     ))}
@@ -34,6 +34,10 @@ export const Products = () => (
 );
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
-  paddingBottom: theme.spacing(13),
+  paddingBottom: theme.spacing(12),
   paddingTop: theme.spacing(3),
+
+  [theme.breakpoints.down('md')]: {
+    paddingBottom: theme.spacing(7),
+  },
 }));

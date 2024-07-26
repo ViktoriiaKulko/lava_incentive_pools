@@ -79,7 +79,7 @@ export const CTAEmail = () => {
             Join Our Community
           </Typography>
 
-          <Stack direction="row" spacing={3}>
+          <Stack direction="row" spacing={{ xs: 2, md: 3 }}>
             <CTAEmailSocial icon="discord" />
             <CTAEmailSocial icon="uxwing" />
             <CTAEmailSocial icon="telegram" />
@@ -107,6 +107,14 @@ const StyledCTAEmail = styled(Stack)(({ theme }) => ({
   border: '1px solid #FF3900',
   borderRadius: 32,
   padding: theme.spacing(14),
+
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(8),
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(5, 3),
+  },
 }));
 
 const StyledTypography = styled(Typography)({ maxWidth: 692 });
@@ -114,6 +122,8 @@ const StyledTypography = styled(Typography)({ maxWidth: 692 });
 const StyledForm = styled('form')({ position: 'relative' });
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
+  width: '100%',
+
   '& .MuiInputBase-root': {
     backgroundColor: theme.palette.common.white,
     borderRadius: 40,
@@ -138,10 +148,24 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     position: 'absolute',
     bottom: -24,
   },
+
+  [theme.breakpoints.down('sm')]: {
+    '& .MuiInputBase-root': {
+      height: 48,
+      paddingRight: 0,
+      width: '100%',
+    },
+  },
 }));
 
-const StyledButton = styled(Button)({
+const StyledButton = styled(Button)(({ theme }) => ({
   position: 'absolute',
   right: 8,
   top: 7,
-});
+
+  [theme.breakpoints.down('sm')]: {
+    marginTop: theme.spacing(2),
+    position: 'static',
+    width: '100%',
+  },
+}));

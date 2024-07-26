@@ -26,7 +26,7 @@ const dataCards: IDataCard[] = [
 export const DataCards = () => (
   <Grid container spacing={1.5}>
     {dataCards.map((card) => (
-      <Grid key={card.title} item xs={3}>
+      <Grid key={card.title} item xs={12} sm={6} md={3}>
         <DataCardItem {...card} />
       </Grid>
     ))}

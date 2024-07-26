@@ -7,7 +7,7 @@ import { Space_Grotesk } from 'next/font/google';
 const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const CTA = () => (
-  <Stack alignItems="center" spacing={4}>
+  <Stack alignItems="center" spacing={{ xs: 3, md: 4 }}>
     <Stack spacing={1}>
       <Typography
         align="center"
